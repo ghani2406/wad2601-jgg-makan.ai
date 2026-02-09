@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makan.ai | Digital Concierge</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="WADCSS.css">
+</head>
+
+<body class="bg-black text-white antialiased">
+
+<nav class="nav-container">
+    <div class="brand">
+        <h1 class="logo">makan.ai</h1>
+        <p class="tagline">Premium Digital Concierge</p>
+    </div>
+</nav>
+
+<main id="chat-window" class="chat-viewport custom-scroll">
+    <div class="msg-bot animate-in">
+        <div class="bot-avatar">🤖</div>
+        <div class="bubble-bot">
+            <span class="sender-name">Assistant Bot</span>
+            <p>Hello! Ready to satisfy your cravings? Type the menu you want or choose categories like <b>"spicy"</b> or <b>"sweet"</b>.</p>
+        </div>
+    </div>
+</main>
+<div id="cart-trigger" onclick="openCart()" class="cart-float hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+    </svg>
+    
+    <span id="cart-count" class="badge">0</span>
+</div>
+<footer class="input-area">
+    <div class="input-wrapper">
+        <input type="text" id="userInput" placeholder="Type something..." onkeypress="handleEnter(event)">
+        <button onclick="sendMessage()" class="btn-send">
+        </button>
+    </div>
+</footer>
+
+<script type="module" src="buyer-firebase.js"></script>
+<script src="WADJS.js"></script>
+</body>
+</html>
