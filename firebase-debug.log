@@ -1,51 +1,51 @@
-[debug] [2026-05-04T04:29:50.562Z] ----------------------------------------------------------------------
-[debug] [2026-05-04T04:29:50.565Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
-[debug] [2026-05-04T04:29:50.565Z] CLI Version:   15.16.0
-[debug] [2026-05-04T04:29:50.565Z] Platform:      win32
-[debug] [2026-05-04T04:29:50.565Z] Node Version:  v24.15.0
-[debug] [2026-05-04T04:29:50.565Z] Time:          Mon May 04 2026 11:29:50 GMT+0700 (Waktu Indonesia Barat)
-[debug] [2026-05-04T04:29:50.566Z] ----------------------------------------------------------------------
+[debug] [2026-05-04T04:30:06.401Z] ----------------------------------------------------------------------
+[debug] [2026-05-04T04:30:06.404Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-05-04T04:30:06.404Z] CLI Version:   15.16.0
+[debug] [2026-05-04T04:30:06.404Z] Platform:      win32
+[debug] [2026-05-04T04:30:06.404Z] Node Version:  v24.15.0
+[debug] [2026-05-04T04:30:06.405Z] Time:          Mon May 04 2026 11:30:06 GMT+0700 (Waktu Indonesia Barat)
+[debug] [2026-05-04T04:30:06.405Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2026-05-04T04:29:51.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-05-04T04:29:51.734Z] > authorizing via signed-in user (xieghan@gmail.com)
-[debug] [2026-05-04T04:29:51.734Z] [iam] checking project wad2601jgg-b9561 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2026-05-04T04:29:51.736Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:51.736Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:51.737Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions [none]
-[debug] [2026-05-04T04:29:51.737Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions  x-goog-user-project=wad2601jgg-b9561
-[debug] [2026-05-04T04:29:51.737Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2026-05-04T04:29:52.888Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions 200
-[debug] [2026-05-04T04:29:52.889Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2026-05-04T04:29:52.889Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:52.889Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:52.890Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 [none]
-[debug] [2026-05-04T04:29:53.398Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 200
-[debug] [2026-05-04T04:29:53.398Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 {"projectId":"wad2601jgg-b9561","projectNumber":"1077286369453","displayName":"WAD2601JGG","name":"projects/wad2601jgg-b9561","resources":{"hostingSite":"wad2601jgg-b9561"},"state":"ACTIVE","etag":"1_c0054f91-a645-41aa-ae37-9b47863cfc1f"}
+[debug] [2026-05-04T04:30:07.659Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-04T04:30:07.659Z] > authorizing via signed-in user (xieghan@gmail.com)
+[debug] [2026-05-04T04:30:07.659Z] [iam] checking project wad2601jgg-b9561 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-05-04T04:30:07.661Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:07.661Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:07.662Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions [none]
+[debug] [2026-05-04T04:30:07.662Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions  x-goog-user-project=wad2601jgg-b9561
+[debug] [2026-05-04T04:30:07.662Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-04T04:30:08.768Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions 200
+[debug] [2026-05-04T04:30:08.769Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wad2601jgg-b9561:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-04T04:30:08.769Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:08.770Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:08.770Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 [none]
+[debug] [2026-05-04T04:30:09.131Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 200
+[debug] [2026-05-04T04:30:09.131Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wad2601jgg-b9561 {"projectId":"wad2601jgg-b9561","projectNumber":"1077286369453","displayName":"WAD2601JGG","name":"projects/wad2601jgg-b9561","resources":{"hostingSite":"wad2601jgg-b9561"},"state":"ACTIVE","etag":"1_c0054f91-a645-41aa-ae37-9b47863cfc1f"}
 [info] 
 [info] === Deploying to 'wad2601jgg-b9561'...
 [info] 
 [info] i  deploying hosting 
-[debug] [2026-05-04T04:29:53.402Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:53.402Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:53.402Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 [none]
-[debug] [2026-05-04T04:29:54.405Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 200
-[debug] [2026-05-04T04:29:54.405Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 {"name":"projects/wad2601jgg-b9561/sites/wad2601jgg-b9561","defaultUrl":"https://wad2601jgg-b9561.web.app","appId":"1:1077286369453:web:0bd30f4678a99090dbee24","type":"DEFAULT_SITE"}
-[debug] [2026-05-04T04:29:54.409Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:54.409Z] Checked if tokens are valid: true, expires at: 1777872476265
-[debug] [2026-05-04T04:29:54.409Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions [none]
-[debug] [2026-05-04T04:29:54.409Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2026-05-04T04:29:55.414Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions 200
-[debug] [2026-05-04T04:29:55.415Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions {"name":"projects/1077286369453/sites/wad2601jgg-b9561/versions/59b43dc38bb69d02","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-05-04T04:30:09.136Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:09.136Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:09.136Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 [none]
+[debug] [2026-05-04T04:30:09.988Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 200
+[debug] [2026-05-04T04:30:09.988Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wad2601jgg-b9561/sites/wad2601jgg-b9561 {"name":"projects/wad2601jgg-b9561/sites/wad2601jgg-b9561","defaultUrl":"https://wad2601jgg-b9561.web.app","appId":"1:1077286369453:web:0bd30f4678a99090dbee24","type":"DEFAULT_SITE"}
+[debug] [2026-05-04T04:30:09.992Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:09.992Z] Checked if tokens are valid: true, expires at: 1777872476265
+[debug] [2026-05-04T04:30:09.992Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions [none]
+[debug] [2026-05-04T04:30:09.992Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-05-04T04:30:11.031Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions 200
+[debug] [2026-05-04T04:30:11.032Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wad2601jgg-b9561/versions {"name":"projects/1077286369453/sites/wad2601jgg-b9561/versions/f097fd00cc8c3b35","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
 [info] i  hosting[wad2601jgg-b9561]: beginning deploy... 
-[info] i  hosting[wad2601jgg-b9561]: found 158515 files in . 
-[debug] [2026-05-04T04:30:08.100Z] [hosting] uploading with 200 concurrency
-[debug] [2026-05-04T04:30:08.101Z] [hosting] hash cache [] not populated
-[debug] [2026-05-04T04:30:08.130Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\ntuser.dat.LOG2'
+[info] i  hosting[wad2601jgg-b9561]: found 158513 files in . 
+[debug] [2026-05-04T04:30:23.002Z] [hosting] uploading with 200 concurrency
+[debug] [2026-05-04T04:30:23.003Z] [hosting] hash cache [] not populated
+[debug] [2026-05-04T04:30:23.032Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\ntuser.dat.LOG2'
 [error] 
 [error] Error: An unexpected error has occurred.
-[debug] [2026-05-04T04:30:08.130Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\ntuser.dat.LOG1'
+[debug] [2026-05-04T04:30:23.033Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\ntuser.dat.LOG1'
 [error] 
 [error] Error: An unexpected error has occurred.
-[debug] [2026-05-04T04:30:08.131Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\NTUSER.DAT'
+[debug] [2026-05-04T04:30:23.034Z] Error: EBUSY: resource busy or locked, open 'C:\Users\Admin\NTUSER.DAT'
 [error] 
 [error] Error: An unexpected error has occurred.

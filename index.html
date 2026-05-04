@@ -3,136 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makan.ai | Digital Concierge</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="WADCSS.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Seller Center | Makan.ai</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="WADCSS.css">
+<link rel="stylesheet" href="seller.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script src="WADJS.js"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0a0a0a; color: white; }
+        .seller-container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.5rem; }
+        .table-row { border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .table-row:hover { background: rgba(255,255,255,0.02); }
+        .badge-low { background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 2px 8px; border-radius: 6px; font-size: 10px; }
+    </style>
 </head>
-<script>
-function setQuery(val) {
-    const input = document.getElementById("chat-input");
-    // Extract text after emoji and trigger search
-    input.value = val.split(' ')[1].toLowerCase(); 
-    window.sendMessage(); 
-}
-</script>
-<body class="text-white antialiased">
+<body>
 
-<nav class="nav-container">
-    <div class="brand">
-        <h1 class="logo">makan.ai</h1>
-        <p class="tagline">Premium Digital Concierge</p>
-    </div>
-</nav>
-<div class="fixed left-4 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-3">
-    <div style="font-size: 10px; color: #ff6b00; font-weight: 800; transform: rotate(-90deg); margin-bottom: 30px; width: max-content; transform-origin: left;">
-        
-    </div>
-    
-    <button onclick="trackLatestOrder()" class="track-fab">
-    <span class="track-icon">🚚</span>
-    <span class="track-text">TRACK ORDER</span>
-</button>
-
-<main id="chat-window" class="chat-viewport custom-scroll">
-    <div class="msg-bot animate-in">
-        <div class="bot-avatar">🤖</div>
-        <div class="bubble-bot">
-            <span class="sender-name">Assistant Bot</span>
-            <p>Hello! Ready to satisfy your cravings? Type the menu you want or choose categories like <b>"spicy"</b> or <b>"sweet"</b>.</p>
+<div class="seller-container">
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h1 class="text-2xl font-800 text-orange-500">Seller Dashboard</h1>
+            <p class="text-gray-500 text-sm">Manage your inventory and monitor sales</p>
         </div>
-    </div>
-</main>
-<div id="cart-trigger" onclick="viewCart()" class="cart-float hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-    </svg>
-    <span id="cart-count" class="badge">0</span>
-</div>
-<div class="history-fab" onclick="showHistory()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-        <path d="M3 3v5h5"></path>
-        <path d="M12 7v5l4 2"></path>
-    </svg>
-    <span>History</span>
-</div>
-</script>
-
-<script>
-// Helper for the sidebar buttons
-function setQuery(val) {
-    const input = document.getElementById("chat-input");
-    input.value = val.split(' ')[1].toLowerCase(); 
-    window.sendMessage(); 
-}
-</script>
-
-<div class="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
-    <div class="filter-label">Quick Filter</div>
-    <button onclick="setQuery('📖 Menu')" class="tag-chip-vertical">
-        <span>📖</span>
-        <span class="text-[10px]">Menu</span>
-    </button>
-    <button onclick="setQuery('🔥 Spicy')" class="tag-chip-vertical">
-        <span>🔥</span>
-        <span class="text-[10px]">Spicy</span>
-    </button>
-    <button onclick="setQuery('💸 Cheap')" class="tag-chip-vertical">
-        <span>💸</span>
-        <span class="text-[10px]">Cheap</span>
-    </button>
-</div>
-</div>
-<footer class="fixed bottom-6 left-0 w-full px-4 z-[90]">
-    <div class="max-w-xl mx-auto flex gap-2 items-center bg-[rgba(28,28,30,0.8)] backdrop-blur-xl p-2 rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all focus-within:border-[#ff6b00]/50 focus-within:shadow-[0_8px_32px_rgba(255,107,0,0.2)]">
-        <input 
-            type="text" 
-            id="chat-input" 
-            placeholder="Search the menu or type 'spicy'..." 
-            class="flex-1 bg-transparent border-none outline-none px-5 py-2 text-white text-[15px]"
-            onkeypress="if(event.key === 'Enter') sendMessage()"
-        >
-        <button onclick="sendMessage()" class="bg-gradient-to-r from-[#ff6b00] to-[#e65c00] hover:scale-105 p-3 rounded-full transition-all shadow-[0_4px_14px_rgba(255,107,0,0.4)]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-        </button>
-    </div>
-</footer>
-
-<!-- Buyer to Seller Chat Modal -->
-<div id="buyerChatModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100]">
-    <div class="bg-[#111] border border-white/10 rounded-3xl w-full max-w-md animate-in flex flex-col h-[500px] overflow-hidden relative">
-        <div class="bg-orange-500 p-4 flex justify-between items-start">
-            <div>
-                <h2 class="text-md font-800 text-black">Chat with Makan.ai Kitchen</h2>
-                <p class="text-[10px] text-black/70">For Order #<span id="buyerChatOrderId"></span></p>
+        <div class="flex gap-4">
+            <div class="stat-card flex items-center gap-3 py-2 px-4">
+                <span class="text-xs text-gray-400">Status:</span>
+                <span class="text-xs font-bold text-green-500">● OPEN</span>
             </div>
-            <button onclick="closeBuyerChat()" class="text-black/60 hover:text-black text-xl font-bold p-1">✖</button>
+        </div>
+    </div>
+
+    <div class="stat-card overflow-hidden">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-bold text-lg">Inventory List</h3>
+            <button onclick="toggleModal()" class="bg-orange-500 text-white text-xs px-4 py-2 rounded-lg font-bold hover:bg-orange-600 transition-all">
+                + Add New Menu
+            </button>
         </div>
         
-        <div id="buyerChatBody" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3">
-            <!-- Messages stream here -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="text-gray-500 text-xs uppercase border-b border-white/10">
+                        <th class="pb-4 font-medium">Menu Item</th>
+                        <th class="pb-4 font-medium">Category</th>
+                        <th class="pb-4 font-medium text-right">Price</th>
+                        <th class="pb-4 font-medium text-center">Stock</th>
+                        <th class="pb-4 font-medium text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-body">
+                    </tbody>
+            </table>
         </div>
-        
-        <div class="p-3 border-t border-white/10 bg-black/40 flex gap-2">
-            <input type="text" id="buyerChatInput" placeholder="Message the restaurant..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-500">
-            <button onclick="sendBuyerChat()" class="bg-orange-500 text-black font-bold px-4 rounded-xl hover:bg-white transition-all text-sm">Send</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-8">
+        <div class="stat-card">
+            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Total Items</p>
+            <h2 class="text-2xl font-bold" id="total-items">0</h2>
         </div>
+        <div class="stat-card border-l-4 border-l-red-500">
+            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Low Stock Alert</p>
+            <h2 class="text-2xl font-bold text-red-500" id="low-stock-count">0</h2>
+        </div>
+        <div class="stat-card border-l-4 border-l-orange-500">
+            <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Out of Stock</p>
+            <h2 class="text-2xl font-bold text-orange-500" id="out-of-stock-count">0</h2>
+        </div>
+    </div>
+<div class="mt-10">
+    <h2 class="text-xl font-bold mb-4">Incoming Orders</h2>
+    <div class="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-white/5 text-[10px] uppercase text-gray-400">
+                <tr>
+                    <th class="p-3">ID</th>
+                    <th class="p-3">Items</th>
+                    <th class="p-3">Address</th>
+                    <th class="p-3">Total</th>
+                    <th class="p-3">Status</th>
+                    <th class="p-3 text-right">Action</th>
+                </tr>
+            </thead>
+            <tbody id="orders-body">
+                </tbody>
+        </table>
     </div>
 </div>
 
-<script src="buyer-firebase.js" type="module"></script>
-<script src="WADJS.js"></script>
+    <div id="menuModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-[#1a1a1a] border border-white/10 p-8 rounded-3xl w-full max-w-md animate-in">
+            <h2 class="text-xl font-800 text-orange-500 mb-6">Add New Menu Item</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="text-[10px] text-gray-500 uppercase font-bold">Item Name</label>
+                    <input type="text" id="newName" placeholder="e.g. Bakso Mercon" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm mt-1 focus:border-orange-500 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] text-gray-500 uppercase font-bold">Price (Rp)</label>
+                        <input type="number" id="newPrice" placeholder="20000" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm mt-1 outline-none">
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-500 uppercase font-bold">Initial Stock</label>
+                        <input type="number" id="newStock" placeholder="20" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm mt-1 outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] text-gray-500 uppercase font-bold">Emoji & Category (Comma separated)</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="newEmoji" placeholder="🍲" class="w-20 bg-white/5 border border-white/10 rounded-xl p-3 text-sm mt-1 outline-none">
+                        <input type="text" id="newTags" placeholder="spicy, meat" class="flex-1 bg-white/5 border border-white/10 rounded-xl p-3 text-sm mt-1 outline-none">
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-8">
+                <button onclick="toggleModal()" class="flex-1 py-3 text-xs font-bold text-gray-400">CANCEL</button>
+                <button onclick="saveNewMenu()" class="flex-1 bg-orange-500 py-3 rounded-xl text-xs font-extrabold hover:bg-orange-600 transition-all">SAVE ITEM</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Map Tracker Modal (Seller simulates driver) -->
+    <div id="trackerModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-[#1a1a1a] border border-white/10 p-6 rounded-3xl w-full max-w-lg animate-in flex flex-col h-[600px]">
+            <h2 class="text-xl font-800 text-orange-500 mb-2">Live Delivery Simulator</h2>
+            <p class="text-[10px] text-gray-400 mb-4">Drag the driver icon to simulate moving location to the customer</p>
+            <div id="sellerMap" class="w-full flex-1 rounded-xl bg-white/5 mb-4 border border-white/10 z-0"></div>
+            <div class="flex gap-3">
+                <button onclick="closeTrackerModal()" class="flex-1 py-3 text-xs font-bold text-gray-400 border border-white/10 rounded-xl hover:bg-white/5">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-[#1a1a1a] border border-white/10 rounded-3xl w-full max-w-md animate-in flex flex-col h-[500px] overflow-hidden relative">
+            <div class="bg-orange-500 p-4 flex justify-between items-start">
+                <div>
+                    <h2 class="text-md font-800 text-black">Chat with Customer</h2>
+                    <p class="text-[10px] text-black/70 order-id-label">Order #</p>
+                </div>
+                <button onclick="closeChatModal()" class="text-black/60 hover:text-black text-xl font-bold p-1">✖</button>
+            </div>
+            
+            <div id="chatBody" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3">
+                <!-- Chat bubbles go here -->
+            </div>
+            
+            <div class="p-3 border-t border-white/10 bg-black/20 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-500">
+                <button id="sendChatBtn" class="bg-orange-500 text-black font-bold px-4 rounded-xl hover:bg-white transition-all text-sm">Send</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiUn1geiAd8FHNQtR6L6VcR-hzc_1Ux44",
+  authDomain: "wad2601jgg-b9561.firebaseapp.com",
+  projectId: "wad2601jgg-b9561",
+  storageBucket: "wad2601jgg-b9561.firebasestorage.app",
+  messagingSenderId: "1077286369453",
+  appId: "1:1077286369453:web:0bd30f4678a99090dbee24"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// make db global
+window.db = db;
+</script>
+
+<!-- Seller logic -->
+<script type="module" src="seller.js"></script>
+
 </body>
 </html>
