@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makan.ai | Digital Concierge</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="WADCSS.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="WADJS.js"></script>
+</head>
+<script>
+function setQuery(val) {
+    const input = document.getElementById("chat-input");
+    // Extract text after emoji and trigger search
+    input.value = val.split(' ')[1].toLowerCase(); 
+    window.sendMessage(); 
+}
+</script>
+<body class="text-white antialiased">
+
+<nav class="nav-container">
+    <div class="brand">
+        <h1 class="logo">makan.ai</h1>
+        <p class="tagline">Premium Digital Concierge</p>
+    </div>
+</nav>
+<div class="fixed left-4 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-3">
+    <div style="font-size: 10px; color: #ff6b00; font-weight: 800; transform: rotate(-90deg); margin-bottom: 30px; width: max-content; transform-origin: left;">
+        
+    </div>
+    
+    <button onclick="trackLatestOrder()" class="track-fab">
+    <span class="track-icon">🚚</span>
+    <span class="track-text">TRACK ORDER</span>
+</button>
+
+<main id="chat-window" class="chat-viewport custom-scroll">
+    <div class="msg-bot animate-in">
+        <div class="bot-avatar">🤖</div>
+        <div class="bubble-bot">
+            <span class="sender-name">Assistant Bot</span>
+            <p>Hello! Ready to satisfy your cravings? Type the menu you want or choose categories like <b>"spicy"</b> or <b>"sweet"</b>.</p>
+        </div>
+    </div>
+</main>
+<div id="cart-trigger" onclick="viewCart()" class="cart-float hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+    </svg>
+    <span id="cart-count" class="badge">0</span>
+</div>
+<div class="history-fab" onclick="showHistory()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+        <path d="M3 3v5h5"></path>
+        <path d="M12 7v5l4 2"></path>
+    </svg>
+    <span>History</span>
+</div>
+</script>
+
+<script>
+// Helper for the sidebar buttons
+function setQuery(val) {
+    const input = document.getElementById("chat-input");
+    input.value = val.split(' ')[1].toLowerCase(); 
+    window.sendMessage(); 
+}
+</script>
+
+<div class="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
+    <div class="filter-label">Quick Filter</div>
+    <button onclick="setQuery('📖 Menu')" class="tag-chip-vertical">
+        <span>📖</span>
+        <span class="text-[10px]">Menu</span>
+    </button>
+    <button onclick="setQuery('🔥 Spicy')" class="tag-chip-vertical">
+        <span>🔥</span>
+        <span class="text-[10px]">Spicy</span>
+    </button>
+    <button onclick="setQuery('💸 Cheap')" class="tag-chip-vertical">
+        <span>💸</span>
+        <span class="text-[10px]">Cheap</span>
+    </button>
+</div>
+</div>
+<footer class="fixed bottom-6 left-0 w-full px-4 z-[90]">
+    <div class="max-w-xl mx-auto flex gap-2 items-center bg-[rgba(28,28,30,0.8)] backdrop-blur-xl p-2 rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all focus-within:border-[#ff6b00]/50 focus-within:shadow-[0_8px_32px_rgba(255,107,0,0.2)]">
+        <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="Search the menu or type 'spicy'..." 
+            class="flex-1 bg-transparent border-none outline-none px-5 py-2 text-white text-[15px]"
+            onkeypress="if(event.key === 'Enter') sendMessage()"
+        >
+        <button onclick="sendMessage()" class="bg-gradient-to-r from-[#ff6b00] to-[#e65c00] hover:scale-105 p-3 rounded-full transition-all shadow-[0_4px_14px_rgba(255,107,0,0.4)]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+</footer>
+
+<!-- Buyer to Seller Chat Modal -->
+<div id="buyerChatModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100]">
+    <div class="bg-[#111] border border-white/10 rounded-3xl w-full max-w-md animate-in flex flex-col h-[500px] overflow-hidden relative">
+        <div class="bg-orange-500 p-4 flex justify-between items-start">
+            <div>
+                <h2 class="text-md font-800 text-black">Chat with Makan.ai Kitchen</h2>
+                <p class="text-[10px] text-black/70">For Order #<span id="buyerChatOrderId"></span></p>
+            </div>
+            <button onclick="closeBuyerChat()" class="text-black/60 hover:text-black text-xl font-bold p-1">✖</button>
+        </div>
+        
+        <div id="buyerChatBody" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3">
+            <!-- Messages stream here -->
+        </div>
+        
+        <div class="p-3 border-t border-white/10 bg-black/40 flex gap-2">
+            <input type="text" id="buyerChatInput" placeholder="Message the restaurant..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-orange-500">
+            <button onclick="sendBuyerChat()" class="bg-orange-500 text-black font-bold px-4 rounded-xl hover:bg-white transition-all text-sm">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="buyer-firebase.js" type="module"></script>
+<script src="WADJS.js"></script>
+</body>
+</html>

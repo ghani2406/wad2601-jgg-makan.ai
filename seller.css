@@ -1,0 +1,35 @@
+/* CSS Khusus Dashboard Seller */
+.seller-container { 
+    max-width: 1000px; 
+    margin: 2rem auto; 
+    padding: 0 1rem; 
+}
+
+.stat-card { 
+    background: rgba(255,255,255,0.03); 
+    border: 1px solid rgba(255,255,255,0.05); 
+    border-radius: 20px; 
+    padding: 1.5rem; 
+}
+
+.table-row { 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    transition: 0.3s; 
+}
+
+.table-row:hover { 
+    background: rgba(255,255,255,0.02); 
+}
+
+.badge-low { 
+    background: rgba(239, 68, 68, 0.1); 
+    color: #ef4444; 
+    padding: 2px 8px; 
+    border-radius: 6px; 
+    font-size: 10px; 
+}
+
+/* Tailwind Custom Utilities */
+.font-800 { 
+    font-weight: 800; 
+}
